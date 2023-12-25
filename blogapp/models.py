@@ -30,6 +30,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    objects = models.Manager()
+    published = PublishedManager()
+
     def get_absolute_url(self):
         return reverse("blog:post_detail", args=[self.publish.year,
                                                  self.publish.month,
@@ -37,5 +40,4 @@ class Post(models.Model):
                                                  self.slug])
 
 
-    objects = models.Manager()
-    published = PublishedManager()
+
